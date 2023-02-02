@@ -2,10 +2,8 @@ package com.spring.spring_boot.services;
 
 import com.spring.spring_boot.dao.UserRepository;
 import com.spring.spring_boot.entity.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 
 import java.util.List;
 
@@ -18,6 +16,7 @@ public class UserServiceIml implements UserService {
         this.userRepository = userRepository;
     }
 
+    @Transactional
     @Override
     public void saveUser(User user) {
         userRepository.save(user);
@@ -36,12 +35,11 @@ public class UserServiceIml implements UserService {
 
         return userRepository.findAll();
     }
-
+    @Transactional
     @Override
     public void deleteUser(Long id) {
         userRepository.deleteById(id);
     }
-
 
 
 }
